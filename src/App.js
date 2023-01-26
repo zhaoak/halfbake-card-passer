@@ -7,6 +7,8 @@ import ExecutePassButton from './components/ExecutePassButton';
 import { useGameContext } from './context/GameContext.js';
 
 function App() {
+  // putting deck and setDeck in context just in case I need it from there later...
+  // but going to leave the prop passes where it's only from one layer of components to the one immediately below
   const {
     deck,
     setDeck,
@@ -68,18 +70,7 @@ function App() {
         <Player player={3} hand={playerThreeHand} />
         <CardList cards={deck} player={'deck'} />
       </section>
-      <section>
-        {selectedCard && (
-          <ExecutePassButton
-            passCard={passCard}
-            setFrom={setFrom}
-            from={from}
-            to={to}
-            selectedCard={selectedCard}
-            setSelectedCard={setSelectedCard}
-          />
-        )}
-      </section>
+      <section>{selectedCard && <ExecutePassButton passCard={passCard} />}</section>
     </div>
   );
 }
